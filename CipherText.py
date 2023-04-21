@@ -13,10 +13,27 @@ def _pad_key(plaintext, key):
     return paddedKey
 
 # implement ecrypt_decrypt method
-    # define the first alphabet letter to get position in alphabet
-    # get the position of the plaintext character
-    # formula for encryption or decryption
-    # get character of the ASCII code
+def _encrypt_decrypt_char(plaintextChar, keyChar, mode='encrypt'):
+    if plaintextChar.isalpha():
+        # define the first alphabet letter to get position in alphabet
+        firstAlphabetLetter = 'a'
+        if plaintextChar.isupper():
+            firstAlphabetLetter = 'A'
+            
+        # get the position of the plaintext character
+        oldCharPosition = ord(plaintextChar) - ord(firstAlphabetLetter)
+        keyCharPosition = ord(keyChar.upper()) - ord('A')
+
+        # formula for encryption or decryption
+        if mode == 'encrypt':
+            newCharPosition = (oldCharPosition + keyCharPosition) % 26
+        else:
+            newCharPosition = (oldCharPosition - keyCharPosition + 26) % 26
+            
+        # get character of the ASCII code
+        return chr(newCharPosition + ord(firstAlphabetLetter))
+    return plaintextChar
+
 # return ciphertext
 # implement decrypt method to get plaintext
 # ask user to input message
