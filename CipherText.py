@@ -43,6 +43,12 @@ def encrypt(plaintext, key):
     return ciphertext
 
 # implement decrypt method to get plaintext
+def decrypt(ciphertext, key):
+    plaintext = ''
+    paddedKey = _pad_key(ciphertext, key)
+    for ciphertextChar, keyChar in zip(ciphertext, paddedKey):
+        plaintext += _encrypt_decrypt_char(ciphertextChar, keyChar, mode='decrypt')
+    return plaintext
 
 # ask user to input message
 # print output
