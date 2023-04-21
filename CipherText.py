@@ -51,5 +51,16 @@ def decrypt(ciphertext, key):
     return plaintext
 
 # ask user to input message
-# print output
+print("\u001b[30m=" * 50)
+print("\u001b[33mType your input in all UPPERCASE and no spaces")
+plaintext = input("\033[95mEnter a message: ")
+key = input("\033[1;32mEnter a key: ")
+print("\u001b[30m=" * 50)
 
+# print output
+ciphertext = encrypt(plaintext, key)
+decryptedPlaintext = decrypt(ciphertext, key)
+
+print(f'\033[95mCiphertext: {ciphertext}')
+print(f'\033[1;32mDecrypted Plaintext: {decryptedPlaintext}')
+print("\u001b[30m=" * 50)
